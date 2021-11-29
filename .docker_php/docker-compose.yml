@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+    php-cli:
+      build: .
+      container_name: php_cli
+      restart: unless-stopped
+      volumes:
+        - ../:/home/
+      networks:
+        - php-network
+      command: ['tail', '-f', '/dev/null']
+
+networks:
+  php-network:
+    driver: bridge
